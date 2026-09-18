@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Cada Ano Conta — Prevenção da Mortalidade Infantil no Brasil</title>
+
+  <meta
+    name="description"
+    content="Informação e orientação prática para reduzir a mortalidade infantil evitável no Brasil. Um projeto de extensão em Análise e Desenvolvimento de Sistemas — ODS 3."
+  >
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Piazzolla:ital,opsz,wght@0,8..30,400;0,8..30,500;0,8..30,600;1,8..30,500&family=Public+Sans:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <div class="top-note">
+    Projeto de Extensão · ADS ·
+    <strong>ODS 3 — Saúde e Bem-Estar</strong>
+  </div>
+
+  <header class="hero">
+
+    <svg
+      class="hero-wave"
+      viewBox="0 0 1200 140"
+      preserveAspectRatio="none"
+      aria-hidden="true"
+    >
+      <path
+        d="M0,90 C150,40 300,130 450,80 C600,30 750,110 900,70 C1050,35 1150,90 1200,60 L1200,140 L0,140 Z"
+        fill="#FBF6EC"
+        fill-opacity="0.06"
+      />
+
+      <path
+        d="M0,110 C150,70 300,140 450,100 C600,60 750,125 900,95 C1050,65 1150,105 1200,85"
+        fill="none"
+        stroke="#DE9F35"
+        stroke-width="2"
+        stroke-opacity="0.5"
+      />
+    </svg>
+
+    <div class="wrap hero-inner">
+
+      <p class="hero-eyebrow">
+        Prevenção &amp; Informação
+      </p>
+
+      <h1>
+        No Brasil, ainda perdemos crianças por causas que
+        <em>podemos evitar</em>.
+      </h1>
+
+      <p class="hero-sub">
+        Pré-natal irregular, baixo peso ao nascer, vacinação incompleta
+        e falta de saneamento continuam entre as principais causas de
+        morte de bebês antes de completar 1 ano — todas evitáveis com
+        informação e cuidado a tempo.
+      </p>
+
+      <div class="hero-stat-row">
+
+        <div class="hero-stat">
+          <p class="num">12,6%</p>
+          <p class="label">
+            óbitos por mil nascidos vivos no Brasil em 2024
+          </p>
+        </div>
+
+        <div class="hero-stat">
+          <p class="num">15,7%</p>
+          <p class="label">
+            na Região Norte — a maior taxa do país
+          </p>
+        </div>
+
+        <div class="hero-stat">
+          <p class="num">9,5%</p>
+          <p class="label">
+            dos bebês nasceram com baixo peso em 2024
+          </p>
+        </div>
+
+      </div>
+
+      <div class="hero-actions">
+        <a href="#participar" class="btn btn-primary">
+          Quero participar da roda de conversa
+        </a>
+
+        <a href="#causas" class="btn btn-ghost">
+          Entender as causas
+        </a>
+      </div>
+
+    </div>
+  </header>
+
+
+  <section id="numeros">
+
+    <div class="wrap-wide">
+
+      <div class="section-head">
+
+        <p class="kicker">
+          O que os números mostram
+        </p>
+
+        <h2>
+          Uma taxa parada desde 2015 — e muito desigual entre regiões
+        </h2>
+
+        <p>
+          Depois de décadas em queda, a mortalidade infantil no Brasil
+          estacionou. E a média nacional esconde uma diferença de quase
+          1,5 vez entre a região com a maior e a menor taxa.
+        </p>
+
+      </div>
+
+
+      <div class="chart-card">
+
+        <div class="bar-row">
+          <span class="bar-label">Norte</span>
+
+          <span class="bar-track">
+            <span class="bar-fill" data-width="98%"></span>
+          </span>
+
+          <span class="bar-value">15,7%</span>
+        </div>
+
+
+        <div class="bar-row">
+          <span class="bar-label">Nordeste</span>
+
+          <span class="bar-track">
+            <span class="bar-fill" data-width="84%"></span>
+          </span>
+
+          <span class="bar-value">13,5%</span>
+        </div>
+
+
+        <div class="bar-row">
+          <span class="bar-label">Centro-Oeste</span>
+
+          <span class="bar-track">
+            <span class="bar-fill" data-width="79%"></span>
+          </span>
+
+          <span class="bar-value">12,6%</span>
+        </div>
+
+
+        <div class="bar-row">
+          <span class="bar-label">Sudeste</span>
+
+          <span class="bar-track">
+            <span class="bar-fill" data-width="73%"></span>
+          </span>
+
+          <span class="bar-value">11,7%</span>
+        </div>
+
+
+        <div class="bar-row">
+          <span class="bar-label">Sul</span>
+
+          <span class="bar-track">
+            <span class="bar-fill" data-width="65%"></span>
+          </span>
+
+          <span class="bar-value">10,4%</span>
+        </div>
+
+
+        <div class="bar-row is-national">
+          <span class="bar-label">Brasil (média)</span>
+
+          <span class="bar-track">
+            <span class="bar-fill" data-width="79%"></span>
+          </span>
+
+          <span class="bar-value">12,6%</span>
+        </div>
+
+
+        <p class="chart-note">
+          Óbitos por mil nascidos vivos, 2024. Fonte:
+
+          <a
+            href="https://www.fadc.org.br/noticias/mortalidade-infantil-brasil"
+            target="_blank"
+            rel="noopener"
+          >
+            Fundação Abrinq — Cenário da Infância e Adolescência no Brasil 2026
+          </a>,
+
+          com base em dados do Ministério da Saúde (SIM/SUS).
+        </p>
+
+      </div>
+    </div>
+  </section>
+
+
+  <section id="causas">
+
+    <div class="wrap-wide">
+
+      <div class="section-head">
+
+        <p class="kicker">
+          As causas mais comuns
+        </p>
+
+        <h2>
+          A maior parte dessas mortes tem prevenção conhecida
+        </h2>
+
+        <p>
+          Nenhuma dessas causas é inevitável — todas melhoram com acesso
+          a informação, acompanhamento médico e condições básicas de vida.
+        </p>
+
+      </div>
+
+
+      <div class="causa-grid">
+
+        <div class="causa">
+          <span class="tag">Evitável</span>
+
+          <h3>Pré-natal irregular</h3>
+
+          <p>
+            Menos consultas de pré-natal reduzem a chance de identificar
+            riscos a tempo, tanto para a mãe quanto para o bebê.
+          </p>
+        </div>
+
+
+        <div class="causa">
+          <span class="tag">Evitável</span>
+
+          <h3>Baixo peso ao nascer</h3>
+
+          <p>
+            Em 2024, 9,5% dos bebês nasceram com menos de 2,5kg —
+            o maior índice em anos, associado à saúde materna e à
+            insegurança alimentar.
+          </p>
+        </div>
+
+
+        <div class="causa">
+          <span class="tag">Evitável</span>
+
+          <h3>Vacinação incompleta</h3>
+
+          <p>
+            Doenças imunizáveis ainda figuram entre as causas de morte
+            infantil em regiões com cobertura vacinal mais baixa.
+          </p>
+        </div>
+
+
+        <div class="causa">
+          <span class="tag">Evitável</span>
+
+          <h3>Saneamento básico</h3>
+
+          <p>
+            Falta de água tratada e esgoto adequado aumenta o risco de
+            infecções graves nos primeiros meses de vida.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <section class="orient-band">
+
+    <div class="wrap">
+
+      <div class="section-head">
+
+        <p class="kicker">
+          O que ajuda, na prática
+        </p>
+
+        <h2>
+          Cuidados simples que fazem diferença real
+        </h2>
+
+      </div>
+
+
+      <ul class="check-list">
+
+        <li>
+          <strong>Iniciar o pré-natal cedo</strong>
+          <span>
+            Idealmente ainda no primeiro trimestre, com no mínimo
+            6 consultas até o parto.
+          </span>
+        </li>
+
+
+        <li>
+          <strong>Manter a caderneta de vacinação em dia</strong>
+          <span>
+            Conferir o calendário nacional em cada consulta pediátrica.
+          </span>
+        </li>
+
+
+        <li>
+          <strong>Ficar atento aos sinais de alerta</strong>
+          <span>
+            Febre, dificuldade para mamar, falta de ar ou icterícia
+            pedem avaliação médica imediata.
+          </span>
+        </li>
+
+
+        <li>
+          <strong>Buscar a Unidade Básica de Saúde mais próxima</strong>
+          <span>
+            O acompanhamento gratuito pelo SUS cobre pré-natal,
+            parto e puericultura.
+          </span>
+        </li>
+
+      </ul>
+
+    </div>
+  </section>
+
+
+  <section id="participar">
+
+    <div class="wrap">
+
+      <div class="form-card">
+
+        <h2>
+          Quer participar da nossa roda de conversa?
+        </h2>
+
+        <p>
+          Vamos realizar um encontro presencial sobre pré-natal,
+          vacinação e cuidados no primeiro ano de vida.
+          Deixe seu contato para receber a data, o horário e o local.
+        </p>
+
+
+        <form id="signup-form" novalidate>
+
+          <div>
+            <label for="nome">
+              Nome
+            </label>
+
+            <input
+              type="text"
+              id="nome"
+              name="nome"
+              required
+            >
+          </div>
+
+
+          <div>
+            <label for="contato">
+              WhatsApp ou e-mail
+            </label>
+
+            <input
+              type="text"
+              id="contato"
+              name="contato"
+              required
+              placeholder="(62) 9xxxx-xxxx ou email@exemplo.com"
+            >
+          </div>
+
+
+          <div>
+            <label for="perfil">
+              Isso te representa melhor:
+            </label>
+
+            <select
+              id="perfil"
+              name="perfil"
+            >
+              <option value="gestante">
+                Sou gestante
+              </option>
+
+              <option value="familia">
+                Tenho um bebê ou criança pequena
+              </option>
+
+              <option value="comunidade">
+                Quero apoiar a divulgação
+              </option>
+            </select>
+          </div>
+
+
+          <div class="form-actions">
+
+            <button
+              type="submit"
+              class="btn btn-primary"
+            >
+              Quero ser avisado(a)
+            </button>
+
+            <span
+              id="form-status"
+              role="status"
+            ></span>
+
+          </div>
+
+        </form>
+
+
+        <p
+          class="fallback-note"
+          id="fallback-note"
+          hidden
+        >
+          Não foi possível salvar por aqui agora — mas você ainda
+          garante seu lugar:
+
+          <a
+            id="whatsapp-fallback"
+            href="#"
+            target="_blank"
+            rel="noopener"
+          >
+            chame no WhatsApp
+          </a>.
+        </p>
+
+      </div>
+    </div>
+  </section>
+
+
+  <footer>
+
+    <div class="wrap">
+
+      <div>
+        <p>
+          <strong>Cada Ano Conta</strong>
+        </p>
+
+        <p>
+          Projeto de Extensão — UNIALFA, curso de
+          Análise e Desenvolvimento de Sistemas.
+        </p>
+      </div>
+
+
+      <ul class="sources">
+
+        <li>
+          Fundação Abrinq — Cenário da Infância e Adolescência no Brasil 2026
+        </li>
+
+        <li>
+          Ministério da Saúde — Sistema de Informações sobre Mortalidade (SIM/SUS)
+        </li>
+
+        <li>
+          IBGE — Estatísticas do Registro Civil
+        </li>
+
+      </ul>
+
+    </div>
+
+  </footer>
+  
+  <script src="script.js"></script>
+  
+  
+</body>
+</html>
