@@ -1,9 +1,27 @@
 (function () {
 
-  const form = document.getElementById('signup-form');
-  const status = document.getElementById('form-status');
-  const fallbackNote = document.getElementById('fallback-note');
-  const waLink = document.getElementById('whatsapp-fallback');
+  // =========================================
+  // SUPABASE
+  // =========================================
+
+  const SUPABASE_URL = "https://cigacggxsfrrmelmkniq.supabase.co";
+
+  const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNpZ2FjZ2d4c2Zycm1lbG1rbmlxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODk3MzY1MTEsImV4cCI6MjEwNTMxMjUxMX0.wZP0SMkJYxCBvQLHHq0a4R6geZlG7TRgL3iBYyKBuzc";
+
+  const supabaseClient = window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+  );
+
+
+  // =========================================
+  // ELEMENTOS DO FORMULÁRIO
+  // =========================================
+
+  const form = document.getElementById("signup-form");
+  const status = document.getElementById("form-status");
+  const fallbackNote = document.getElementById("fallback-note");
+  const waLink = document.getElementById("whatsapp-fallback");
 
 
   // =========================================
@@ -13,16 +31,14 @@
   function buildWhatsappLink(nome, contato, perfil) {
 
     const perfilLabel = {
-      gestante: 'sou gestante',
-      familia: 'tenho um bebê pequeno',
-      comunidade: 'quero apoiar a divulgação'
-    }[perfil] || 'quero participar';
-
+      gestante: "sou gestante",
+      familia: "tenho um bebê pequeno",
+      comunidade: "quero apoiar a divulgação"
+    }[perfil] || "quero participar";
 
     const text = encodeURIComponent(
       `Olá! Sou ${nome} e quero participar da roda de conversa sobre saúde na primeira infância (${perfilLabel}). Meu contato: ${contato}`
     );
-
 
     return `https://wa.me/?text=${text}`;
   }
@@ -32,25 +48,22 @@
   // ENVIO DO FORMULÁRIO
   // =========================================
 
-  form.addEventListener('submit', async function (e) {
+  form.addEventListener("submit", async function (e) {
 
     e.preventDefault();
 
-
     const nome = document
-      .getElementById('nome')
+      .getElementById("nome")
       .value
       .trim();
-
 
     const contato = document
-      .getElementById('contato')
+      .getElementById("contato")
       .value
       .trim();
 
-
     const perfil = document
-      .getElementById('perfil')
+      .getElementById("perfil")
       .value;
 
 
@@ -60,10 +73,9 @@
 
     if (!nome || !contato) {
 
-      status.dataset.state = 'err';
+      status.dataset.state = "err";
 
-      status.textContent =
-        'Preencha nome e contato.';
+      status.textContent = "Preencha nome e contato.";
 
       return;
     }
@@ -73,78 +85,64 @@
     // STATUS DE ENVIO
     // =========================================
 
-    status.dataset.state = '';
+    status.dataset.state = "";
 
-    status.textContent = 'Enviando…';
+    status.textContent = "Enviando…";
 
     fallbackNote.hidden = true;
 
 
-    let saved = false;
-
-
     // =========================================
-    // TENTATIVA DE SALVAR NO BANCO
+    // SALVAR NO SUPABASE
     // =========================================
 
     try {
 
-      if (
-        window.claude &&
-        typeof window.claude.use === 'function'
-      ) {
-
-        const db = await window.claude.use('db');
-
-
-        if (db) {
-
-          await db
-            .collection('inscricoes')
-            .add({
-              nome: nome,
-              contato: contato,
-              perfil: perfil,
-              criadoEm: new Date().toISOString()
-            });
+      const { error } = await supabaseClient
+        .from("inscricoes")
+        .insert([
+          {
+            nome: nome,
+            contato: contato,
+            perfil: perfil
+          }
+        ]);
 
 
-          saved = true;
-        }
+      // =========================================
+      // VERIFICAR ERRO
+      // =========================================
+
+      if (error) {
+        throw error;
       }
 
-    } catch (err) {
 
-      console.error(
-        'Erro ao salvar inscrição:',
-        err
-      );
+      // =========================================
+      // SUCESSO
+      // =========================================
 
-      saved = false;
-    }
-
-
-    // =========================================
-    // RESULTADO
-    // =========================================
-
-    if (saved) {
-
-      status.dataset.state = 'ok';
+      status.dataset.state = "ok";
 
       status.textContent =
-        'Prontinho! Vamos te avisar com a data e o local.';
-
+        "Prontinho! Vamos te avisar com a data e o local.";
 
       form.reset();
 
-    } else {
 
-      status.dataset.state = 'err';
+    } catch (error) {
+
+      console.error("Erro ao cadastrar no Supabase:", error);
+
+
+      // =========================================
+      // ERRO + WHATSAPP
+      // =========================================
+
+      status.dataset.state = "err";
 
       status.textContent =
-        'Não deu para salvar automaticamente aqui.';
-
+        "Não deu para salvar automaticamente aqui.";
 
       waLink.href =
         buildWhatsappLink(
@@ -153,36 +151,46 @@
           perfil
         );
 
-
       fallbackNote.hidden = false;
+
     }
 
   });
 
 
+  // =========================================
+  // ANIMAÇÃO DAS BARRAS DO GRÁFICO
+  // =========================================
 
+  document.addEventListener("DOMContentLoaded", function () {
 
-// =========================================
-// ANIMAÇÃO DAS BARRAS DO GRÁFICO
-// =========================================
+    const barras = document.querySelectorAll(".bar-fill");
 
-document.addEventListener("DOMContentLoaded", function () {
+    console.log(
+      "Barras encontradas:",
+      barras.length
+    );
 
-  const barras = document.querySelectorAll(".bar-fill");
+    barras.forEach(function (barra, index) {
 
-  console.log("Barras encontradas:", barras.length);
+      const largura =
+        barra.getAttribute("data-width");
 
-  barras.forEach(function (barra, index) {
+      console.log(
+        "Barra:",
+        index,
+        "Largura:",
+        largura
+      );
 
-    const largura = barra.getAttribute("data-width");
+      setTimeout(function () {
 
-    console.log("Barra:", index, "Largura:", largura);
+        barra.style.width = largura;
 
-    setTimeout(function () {
-      barra.style.width = largura;
-    }, 300 + (index * 250));
+      }, 300 + (index * 250));
+
+    });
 
   });
 
-});
 })();
